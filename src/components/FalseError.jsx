@@ -1,5 +1,4 @@
 import React from "react";
-// import Modal from "./Modal";
 
 const FalseError = () => {
   throw new Error("Error Forzado");

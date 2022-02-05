@@ -26,7 +26,7 @@ export default class ErorBoundary extends React.Component {
             height="10%"
             width="10%"
           />
-          <span className="error-text">somethings went wrong</span>
+          <span className="error-text">Somethings went wrong</span>
           <br />
 
           <Link className="buttonPrimary" to="#">

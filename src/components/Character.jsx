@@ -4,9 +4,9 @@ import propTypes from "prop-types";
 import { setFavorite, deleteFavorite } from "../actions";
 import "../assets/styles/components/Character.scss";
 // import { ReactComponent as SVGStar } from "../assets/static/icons/star.svg"
-import SVGStar from "../assets/static/icons/star.svg"
+import SVGStar from "../assets/static/icons/star.svg";
 
-import CharacterDetail from "./CharacterDetail"
+import CharacterDetail from "./CharacterDetail";
 import Modal from "./Modal";
 import useModal from "../custom-hooks/useModal";
 
@@ -38,40 +38,42 @@ const Character = (props) => {
   useEffect(() => {
     isFavorite();
   });
-  
+
   return (
     <div className="character">
-      <img className="character__img" src={image} alt="Character"/>
+      <img className="character__img" src={image} alt="Character" />
       <div className="character__details">
-        <h2 className="character__details-name">
-          {name}
-        </h2>
-        {favorite ? 
-        <SVGStar onClick={() => handleDeleteFavorite(id)} className="character__details-star favorite"/> :
-          <SVGStar onClick={handleSetFavorite} className="character__details-star noFavorite"/>
-        }
+        <h2 className="character__details-name">{name}</h2>
+        {favorite ? (
+          <SVGStar
+            onClick={() => handleDeleteFavorite(id)}
+            className="character__details-star favorite"
+          />
+        ) : (
+          <SVGStar
+            onClick={handleSetFavorite}
+            className="character__details-star noFavorite"
+          />
+        )}
 
         <p className="character__details__item">
-          <span className="character__details__item-type">Status: </span>
-          {" "}
+          <span className="character__details__item-type">Status: </span>{" "}
           {status}
         </p>
 
         <p className="character__details__item">
-          <span className="character__details__item-type">Species: </span>
-          {" "}
+          <span className="character__details__item-type">Species: </span>{" "}
           {species}
         </p>
 
         <p className="character__details__item">
-          <span className="character__details__item-type">Gender: </span>
-          {" "}
+          <span className="character__details__item-type">Gender: </span>{" "}
           {gender}
         </p>
 
-       <p onClick={handleOpenModal} className="character__details__item-more">
-         More details...
-        </p> 
+        <p onClick={handleOpenModal} className="character__details__item-more">
+          More details...
+        </p>
       </div>
 
       <Modal isOpen={modal} onClose={handleCloseModal}>
@@ -85,14 +87,14 @@ const Character = (props) => {
 Character.propTypes = {
   data: propTypes.object,
   modal: propTypes.bool,
-  favorite: propTypes.bool
+  favorite: propTypes.bool,
 };
 
 // DEFINICIONES NATIVAS DE REDUX
 const mapStateToProps = (state) => {
   return {
-    favoriteCharacters : state.favoriteCharacters,
-  }
+    favoriteCharacters: state.favoriteCharacters,
+  };
 };
 
 const mapDispatchToProps = {
@@ -101,4 +103,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Character);
-  
